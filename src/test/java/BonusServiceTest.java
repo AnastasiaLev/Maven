@@ -2,9 +2,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class BonusServiceTest {
-
-    @Test
-    void shouldCalculateForRegisteredAndUnderLimit() {
+        @Test
+        void shouldCalculateForRegisteredAndUnderLimit() {
         BonusService service = new BonusService();
 
         // подготавливаем данные:
@@ -17,19 +16,26 @@ public class BonusServiceTest {
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
-        amount = 1000;
-        registered = false;
-        expected = 10;
+    }
+        @Test
+        void shouldCalculateForinRegisteredAndUnderLimit() {
+            BonusService service = new BonusService();
 
-        // вызываем целевой метод:
-        actual = service.calculate(amount, registered);
+            // подготавливаем данные:
+            long amount = 1000;
+            boolean registered =false;
+            long expected = 10;
 
-        // производим проверку (сравниваем ожидаемый и фактический):
-        Assertions.assertEquals(expected, actual);
+            // вызываем целевой метод:
+            long actual = service.calculate(amount, registered);
+
+            // производим проверку (сравниваем ожидаемый и фактический):
+            Assertions.assertEquals(expected, actual);
+
     }
 
-    @Test
-    void shouldCalculateForRegisteredAndOverLimit() {
+        @Test
+        void shouldCalculateForRegisteredAndOverLimit() {
         BonusService service = new BonusService();
 
         // подготавливаем данные:
@@ -42,14 +48,21 @@ public class BonusServiceTest {
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
-        amount = 1_000_000;
-        registered = false;
-        expected = 500;
+    }
+        @Test
+        void shouldCalculateForinRegisteredAndOverLimit() {
+        BonusService service = new BonusService();
+
+        // подготавливаем данные:
+        long amount = 1_000_000;
+        boolean registered = false;
+        long expected = 500;
 
         // вызываем целевой метод:
-        actual = service.calculate(amount, registered);
+        long actual = service.calculate(amount, registered);
 
         // производим проверку (сравниваем ожидаемый и фактический):
         Assertions.assertEquals(expected, actual);
     }
-}
+    }
+
